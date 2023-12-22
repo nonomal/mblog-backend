@@ -41,6 +41,21 @@ public class TUser implements Serializable {
     
     private String avatarUrl;
 
+    
+    private Timestamp lastClickedMentioned;
+
+    
+    private String defaultVisibility;
+    private String defaultEnableComment;
+
+    public String getDefaultEnableComment() {
+        return defaultEnableComment;
+    }
+
+    public void setDefaultEnableComment(String defaultEnableComment) {
+        this.defaultEnableComment = defaultEnableComment;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -119,6 +134,22 @@ public class TUser implements Serializable {
 
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
+    }
+
+    public Timestamp getLastClickedMentioned() {
+        return lastClickedMentioned;
+    }
+
+    public void setLastClickedMentioned(Timestamp lastClickedMentioned) {
+        this.lastClickedMentioned = lastClickedMentioned;
+    }
+
+    public String getDefaultVisibility() {
+        return defaultVisibility;
+    }
+
+    public void setDefaultVisibility(String defaultVisibility) {
+        this.defaultVisibility = defaultVisibility;
     }
 
 }

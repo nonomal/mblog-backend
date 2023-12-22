@@ -4,6 +4,7 @@ name: mblog-backend
 trigger:
   branch:
     - prod
+    - prod-allinone
   event:
     - push
 
@@ -16,9 +17,13 @@ steps:
     commands:
       - mvn -DskipTests=true clean package
 
-  - name: docker build
+  - name: docker build prod
     image: plugins/docker
+    when:
+      branch:
+        - prod
     settings:
+      mirror: https://mm0rc4mq.mirror.aliyuncs.com
       registry: 192.168.2.33:47382
       insecure: true
       repo: 192.168.2.33:47382/kingwrcy/mblog-backend
@@ -29,8 +34,29 @@ steps:
       password:
         from_secret: docker_password
 
+  - name: docker build prod-allinone
+    image: plugins/docker
+    when:
+      branch:
+        - prod-allinone
+    settings:
+      dockerfile: Dockerfile-allinone
+      mirror: https://mm0rc4mq.mirror.aliyuncs.com
+      registry: 192.168.2.33:47382
+      insecure: true
+      repo: 192.168.2.33:47382/kingwrcy/mblog
+      tags: latest
+      cache_from: 192.168.2.33:47382/kingwrcy/mblog:latest
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
+
   - name: start service
     image: appleboy/drone-ssh
+    when:
+      branch:
+        - prod
     settings:
       host:
         - 192.168.2.33

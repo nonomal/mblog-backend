@@ -36,7 +36,28 @@ public class TMemo implements Serializable {
     private Timestamp updated;
 
     
-    private String top;
+    private Integer priority;
+
+    
+    private Integer commentCount;
+
+    
+    private Integer likeCount;
+
+    
+    private Integer enableComment;
+
+    
+    private Integer viewCount;
+    private String source;
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
 
     public Integer getId() {
         return id;
@@ -102,12 +123,44 @@ public class TMemo implements Serializable {
         this.updated = updated;
     }
 
-    public String getTop() {
-        return top;
+    public Integer getPriority() {
+        return priority;
     }
 
-    public void setTop(String top) {
-        this.top = top;
+    public void setPriority(Integer priority) {
+        this.priority = priority;
+    }
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
+    }
+
+    public Integer getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public Integer getEnableComment() {
+        return enableComment;
+    }
+
+    public void setEnableComment(Integer enableComment) {
+        this.enableComment = enableComment;
+    }
+
+    public Integer getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(Integer viewCount) {
+        this.viewCount = viewCount;
     }
 
 }
